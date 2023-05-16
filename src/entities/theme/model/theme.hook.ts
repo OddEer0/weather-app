@@ -9,7 +9,7 @@ export const useTheme = () => {
 
 	useEffect(() => {
 		document.body.dataset.theme = theme
-	}, [])
+	}, [theme])
 
 	return {
 		theme,
