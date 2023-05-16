@@ -20,7 +20,7 @@
 		"noFallthroughCasesInSwitch": true,
 		"baseUrl": ".",
 		"paths": {
-			"~/*": ["./src/*", "./dist/*", ""],
+			"@/*": ["./src/*", "./dist/*", ""],
 			"@/app/*": ["src/app/*"],
 			"@/processes/*": ["src/processes/*"],
 			"@/pages/*": ["src/pages/*"],
@@ -31,6 +31,6 @@
 			"@/public/*": ["public/*"]
 		}
 	},
-	"include": ["src"],
+	"include": ["src", "./tests/setup.js"],
 	"references": [{ "path": "./tsconfig.node.json" }]
 }
