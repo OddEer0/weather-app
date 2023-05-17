@@ -1,5 +1,6 @@
 import { Components, Theme } from "@mui/material"
 
+import { MuiPaper } from "./Paper"
 import { MuiFilledInput, MuiInput, MuiOutlinedInput, MuiTextField } from "./TextField"
 
 export const components: Components<Omit<Theme, "components">> = {
@@ -9,5 +10,6 @@ export const components: Components<Omit<Theme, "components">> = {
 	MuiTextField,
 	MuiOutlinedInput,
 	MuiFilledInput,
-	MuiInput
+	MuiInput,
+	MuiPaper
 }

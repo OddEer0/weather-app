@@ -33,5 +33,6 @@ export const darkPalette: PaletteOptions = {
 		700: "#2ab192",
 		800: "#24a98a",
 		900: "#1ca081"
-	}
+	},
+	background: { paper: "#212331" }
 }
