@@ -1,8 +1,12 @@
 import { ThemeProvider } from "@mui/material"
 import { FC, PropsWithChildren } from "react"
 
-import { theme } from "../theme"
+import { useTheme } from "@/entities/theme"
+
+import { darkTheme, lightTheme } from "../theme"
 
 export const WithThemeProvider: FC<PropsWithChildren> = ({ children }) => {
-	return <ThemeProvider theme={theme}>{children}</ThemeProvider>
+	const { theme } = useTheme()
+
+	return <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>{children}</ThemeProvider>
 }

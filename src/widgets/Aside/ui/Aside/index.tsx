@@ -1,7 +1,11 @@
-import { Button } from "@mui/material"
+import { Button, Typography } from "@mui/material"
 import { FC, HTMLAttributes } from "react"
 
+import { ToggleThemeSwitch } from "@/features/ThemeActions"
+
 import { classname } from "@/shared/package/classname"
+
+import { AsideBody } from "../Body"
 
 import styles from "./styles.module.sass"
 
@@ -14,10 +18,16 @@ export const Aside: FC<AsideProps> = ({ className, ...props }) => {
 		<aside className={classes} {...props}>
 			<div className={styles.header}>
 				<Button>BUTTON</Button>
-				<Button>BUTTON</Button>
+				<ToggleThemeSwitch />
 			</div>
-			<div className={styles.body}></div>
-			<div className={styles.footer}></div>
+			<AsideBody />
+			<div className={styles.footer}>
+				<div className={styles.info}>
+					<Typography>Сегодня</Typography>
+					<Typography>Вс, 13 Мар</Typography>
+				</div>
+				<div className="">Москва</div>
+			</div>
 		</aside>
 	)
 }
