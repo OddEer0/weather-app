@@ -4,7 +4,6 @@ import { FC, HTMLAttributes } from "react"
 import { classname } from "@/shared/package/classname"
 
 import { WEATHER_ICON } from "../../lib/constants"
-import { WeatherStatusType } from "../../types"
 
 import styles from "./styles.module.sass"
 
@@ -12,7 +11,7 @@ interface WeatherCardProps extends HTMLAttributes<HTMLDivElement> {
 	date: string
 	temperature: string
 	after?: string
-	status: WeatherStatusType
+	status: keyof typeof WEATHER_ICON
 }
 
 export const WeatherCard: FC<WeatherCardProps> = ({ date, temperature, status, after, className, ...props }) => {

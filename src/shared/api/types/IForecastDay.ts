@@ -51,7 +51,7 @@ export interface IAstro {
 
 export interface IForecastDay {
 	date: string
-	date_epoch: string
+	date_epoch: number
 	day: {
 		maxtemp_c: number
 		maxtemp_f: number

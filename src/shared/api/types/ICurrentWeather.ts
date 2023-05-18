@@ -1,3 +1,5 @@
+import { WEATHER_ICON } from "@/entities/weather"
+
 import { ILocationResponse } from "./ILocation"
 
 export interface ICurrentWeather {
@@ -9,7 +11,7 @@ export interface ICurrentWeather {
 	condition: {
 		text: string
 		icon: string
-		code: 1000
+		code: keyof typeof WEATHER_ICON
 	}
 	wind_mph: number
 	wind_kph: number

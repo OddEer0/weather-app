@@ -13,7 +13,7 @@ export const fetchWeatherFx = createEffect((payload: ILatLon) => {
 
 const $isLoading = createStore<boolean>(true).on(fetchWeatherFx.done, () => true)
 
-const $location = createStore<ILocationResponse | null>(null).on(
+export const $location = createStore<ILocationResponse | null>(null).on(
 	fetchWeatherFx.done,
 	(_, result) => result.result.location
 )
