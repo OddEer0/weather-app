@@ -3,7 +3,7 @@ import { FC, HTMLAttributes } from "react"
 
 import { classname } from "@/shared/package/classname"
 
-import { WEATHER_ICON } from "../../constants"
+import { WEATHER_ICON } from "../../lib/constants"
 import { WeatherStatusType } from "../../types"
 
 import styles from "./styles.module.sass"
