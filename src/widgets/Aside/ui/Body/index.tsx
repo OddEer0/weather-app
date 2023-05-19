@@ -9,11 +9,12 @@ import styles from "./styles.module.sass"
 export const AsideBody: FC = () => {
 	const weather = useStore($currentWeather)
 	const Icon = WEATHER_ICON[weather?.condition.code || 1000]
+	const Alt = WEATHER_ICON[1000]
 
 	return (
 		weather && (
 			<div className={styles.body}>
-				<div className={styles.iconWrapper}>{Icon && <Icon />}</div>
+				<div className={styles.iconWrapper}>{Icon ? <Icon /> : <Alt />}</div>
 				<Typography className={styles.title} variant="h1">
 					{Math.ceil(weather.temp_c)}°c
 				</Typography>

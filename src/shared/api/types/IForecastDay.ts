@@ -1,3 +1,5 @@
+import { WEATHER_ICON } from "@/entities/weather"
+
 export interface IForecastHour {
 	time_epoch: number
 	time: string
@@ -74,7 +76,7 @@ export interface IForecastDay {
 		condition: {
 			text: string
 			icon: string
-			code: number
+			code: keyof typeof WEATHER_ICON
 		}
 		uv: number
 	}

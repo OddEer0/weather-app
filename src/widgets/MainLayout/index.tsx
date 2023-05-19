@@ -1,5 +1,7 @@
 import { FC, PropsWithChildren, ReactNode } from "react"
 
+import { Container } from "@/shared/ui"
+
 import styles from "./styles.module.sass"
 
 interface MainLayoutProps {
@@ -8,9 +10,9 @@ interface MainLayoutProps {
 
 export const MainLayout: FC<PropsWithChildren<MainLayoutProps>> = ({ aside, children }) => {
 	return (
-		<div className={styles.layout}>
+		<Container className={styles.layout}>
 			{aside}
 			<main>{children}</main>
-		</div>
+		</Container>
 	)
 }

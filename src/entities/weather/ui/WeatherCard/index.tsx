@@ -3,33 +3,35 @@ import { FC, HTMLAttributes } from "react"
 
 import { classname } from "@/shared/package/classname"
 
+import { getMonthDateAndWeekDay } from "../../lib"
 import { WEATHER_ICON } from "../../lib/constants"
 
 import styles from "./styles.module.sass"
 
 interface WeatherCardProps extends HTMLAttributes<HTMLDivElement> {
 	date: string
-	temperature: string
-	after?: string
+	temperature: string | number
+	after?: string | number
 	status: keyof typeof WEATHER_ICON
 }
 
 export const WeatherCard: FC<WeatherCardProps> = ({ date, temperature, status, after, className, ...props }) => {
 	const classes = classname(styles.card, className)
+	const Alt = WEATHER_ICON[1000]
 	const Icon = WEATHER_ICON[status]
 
 	return (
 		<Card className={classes} {...props}>
 			<CardContent className={styles.content}>
-				<Typography variant="caption">{date}</Typography>
-				<div className={styles.icon}>
-					<Icon />
-				</div>
+				<Typography variant="caption" className={styles.date}>
+					{getMonthDateAndWeekDay(date)}
+				</Typography>
+				<div className={styles.icon}>{Icon ? <Icon /> : <Alt />}</div>
 				<div className={classname(styles.footer, { [styles.footerCenter]: !after })}>
-					<Typography variant="caption">{temperature}</Typography>
+					<Typography variant="caption">{temperature}°c</Typography>
 					{after && (
 						<Typography className={styles.after} variant="caption">
-							{after}
+							{after}°c
 						</Typography>
 					)}
 				</div>

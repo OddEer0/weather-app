@@ -8,10 +8,10 @@ interface ILatLon {
 }
 
 export const fetchWeatherFx = createEffect((payload: ILatLon) => {
-	return forecastWeatherService.getForecastWeatherByLatLon(payload.lat, payload.lon)
+	return forecastWeatherService.getForecastWeatherByLatLon(payload.lat, payload.lon, 14)
 })
 
-const $isLoading = createStore<boolean>(true).on(fetchWeatherFx.done, () => true)
+const $isLoading = createStore<boolean>(true).on(fetchWeatherFx.done, () => false)
 
 export const $location = createStore<ILocationResponse | null>(null).on(
 	fetchWeatherFx.done,

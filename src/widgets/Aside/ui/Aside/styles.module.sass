@@ -5,6 +5,7 @@
 	padding: 40px
 	background: var(--bg-primary-50)
 	min-height: 720px
+	overflow: auto
 	@include flex-col
 
 .header
@@ -19,3 +20,8 @@
 	width: 100%
 	margin-bottom: 28px
 	@include flex(space-around)
+
+@media screen and ( max-width: 800px )
+	.aside
+		max-width: 100%
+		height: auto
