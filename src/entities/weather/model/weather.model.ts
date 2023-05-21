@@ -1,6 +1,12 @@
 import { combine, createEffect, createStore } from "effector"
 
-import { ICurrentWeather, IForecastDay, ILocationResponse, forecastWeatherService } from "@/shared/api"
+import {
+	ICurrentWeatherResponse,
+	ILocationResponse,
+	IMappedForecast,
+	forecastMapper,
+	forecastWeatherService
+} from "@/shared/api"
 
 interface ILatLon {
 	lat: number
@@ -18,14 +24,13 @@ export const $location = createStore<ILocationResponse | null>(null).on(
 	(_, result) => result.result.location
 )
 
-export const $currentWeather = createStore<ICurrentWeather | null>(null).on(
+export const $currentWeather = createStore<ICurrentWeatherResponse | null>(null).on(
 	fetchWeatherFx.done,
 	(_, result) => result.result.current
 )
 
-export const $forecastWeather = createStore<IForecastDay[] | null>(null).on(
-	fetchWeatherFx.done,
-	(_, result) => result.result.forecast.forecastday
+export const $forecastWeather = createStore<IMappedForecast[] | null>(null).on(fetchWeatherFx.done, (_, result) =>
+	forecastMapper(result.result.forecast.forecastday)
 )
 
 export const $fetchFullWeather = combine({

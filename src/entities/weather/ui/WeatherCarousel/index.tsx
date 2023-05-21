@@ -1,15 +1,16 @@
-import { WeatherCard } from ".."
 import { Skeleton, Stack, Typography } from "@mui/material"
 import { FC, HTMLAttributes } from "react"
 import Carousel from "react-slick"
 
-import { IForecastDay } from "@/shared/api"
+import { IForecastBase } from "@/shared/api"
 import { classname } from "@/shared/package/classname"
+
+import { WeatherCard } from "../WeatherCard"
 
 import styles from "./styles.module.sass"
 
 interface WeatherCarouselProps extends HTMLAttributes<HTMLDivElement> {
-	weathers: IForecastDay[] | null
+	weathers: IForecastBase[] | null
 	isLoading: boolean
 }
 
@@ -18,44 +19,50 @@ export const WeatherCarousel: FC<WeatherCarouselProps> = ({ weathers, isLoading,
 
 	const settings = {
 		slidesToShow: 6,
-		slidesToScroll: 1,
+		slidesToScroll: 6,
 		variableWidth: true,
 		infinite: false,
 		responsive: [
 			{
 				breakpoint: 1280,
 				settings: {
-					slidesToShow: 5
+					slidesToShow: 5,
+					slidesToScroll: 5
 				}
 			},
 			{
 				breakpoint: 1150,
 				settings: {
-					slidesToShow: 4
+					slidesToShow: 4,
+					slidesToScroll: 4
 				}
 			},
 			{
 				breakpoint: 1030,
 				settings: {
-					slidesToShow: 3
+					slidesToShow: 3,
+					slidesToScroll: 3
 				}
 			},
 			{
 				breakpoint: 800,
 				settings: {
-					slidesToShow: 5
+					slidesToShow: 5,
+					slidesToScroll: 5
 				}
 			},
 			{
 				breakpoint: 720,
 				settings: {
-					slidesToShow: 4
+					slidesToShow: 4,
+					slidesToScroll: 4
 				}
 			},
 			{
 				breakpoint: 585,
 				settings: {
-					slidesToShow: 3
+					slidesToShow: 3,
+					slidesToScroll: 3
 				}
 			}
 		]
@@ -74,14 +81,13 @@ export const WeatherCarousel: FC<WeatherCarouselProps> = ({ weathers, isLoading,
 			) : weathers && weathers.length ? (
 				<Carousel {...settings} className={styles.carousel}>
 					{weathers.map(forecast => (
-						<div style={{ display: "flex" }} key={forecast.day.uv}>
+						<div style={{ display: "flex" }} key={forecast.dateEpoch}>
 							<WeatherCard
 								className={styles.card}
-								key={forecast.date_epoch}
-								temperature={Math.ceil(forecast.day.maxtemp_c)}
-								after={Math.ceil(forecast.day.mintemp_c)}
+								temperature={Math.ceil(forecast.maxTemp)}
+								after={forecast.minTemp}
 								date={forecast.date}
-								status={1000}
+								status={forecast.iconCode}
 							/>
 						</div>
 					))}

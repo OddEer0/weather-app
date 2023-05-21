@@ -1,8 +1,6 @@
-import { WEATHER_ICON } from "@/entities/weather"
+import { WEATHER_ICON } from "@/shared/lib"
 
-import { ILocationResponse } from "./ILocation"
-
-export interface ICurrentWeather {
+export interface ICurrentWeatherResponse {
 	last_updated_epoch: number
 	last_updated: string
 	temp_c: number
@@ -30,9 +28,4 @@ export interface ICurrentWeather {
 	uv: number
 	gust_mph: number
 	gust_kph: number
-}
-
-export interface ICurrentWeatherResponse {
-	location: ILocationResponse
-	current: ICurrentWeather
 }

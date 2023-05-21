@@ -9,7 +9,7 @@ exports[`Screenshot testing component > Screenshot component 1`] = `
       class="MuiCardContent-root _content_6a843d css-46bh2p-MuiCardContent-root"
     >
       <span
-        class="MuiTypography-root MuiTypography-caption css-1sn4lm3-MuiTypography-root"
+        class="MuiTypography-root MuiTypography-caption _date_6a843d css-1sn4lm3-MuiTypography-root"
       >
         Date text
       </span>
@@ -36,7 +36,7 @@ exports[`Screenshot testing component > Screenshot component 1`] = `
         <span
           class="MuiTypography-root MuiTypography-caption css-1sn4lm3-MuiTypography-root"
         >
-          14C
+          14C°c
         </span>
       </div>
     </div>

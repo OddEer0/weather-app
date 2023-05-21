@@ -2,10 +2,11 @@ import { Button, Typography } from "@mui/material"
 import { useStore } from "effector-react"
 import { FC, HTMLAttributes } from "react"
 
-import { $fetchLocation, getMonthDateAndWeekDay } from "@/entities/weather"
+import { $fetchLocation } from "@/entities/weather"
 
 import { ToggleThemeSwitch } from "@/features/ThemeActions"
 
+import { getMonthDateAndWeekDay } from "@/shared/lib"
 import { classname } from "@/shared/package/classname"
 
 import { AsideBody } from "../Body"

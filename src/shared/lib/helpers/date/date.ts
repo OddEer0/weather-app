@@ -6,3 +6,10 @@ export const getMonthDateAndWeekDay = (data: string, locale = "ru") => {
 
 	return firstLetterUpperCase([weekday])
 }
+
+export const getHour = (data: string) => {
+	const date = new Date(data)
+	const hour = date.toLocaleString("ru", { hour: "2-digit", minute: "2-digit" })
+
+	return hour
+}

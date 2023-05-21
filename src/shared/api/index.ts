@@ -3,9 +3,13 @@ export * from "./services"
 export type {
 	ICurrentWeatherResponse,
 	ILocationResponse,
-	ICurrentWeather,
-	IAstro,
-	IForecastDay,
-	IForecastHour,
-	IForecastWeatherResponse
+	IForecastWeatherResponse,
+	IAstroResponse,
+	IForecastDayResponse,
+	IForecastHourResponse,
+	IForecastResponse,
+	IMappedForecast,
+	IForecastBase
 } from "./types"
+
+export * from "./mappers"

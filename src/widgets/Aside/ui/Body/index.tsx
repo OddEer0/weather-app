@@ -2,7 +2,9 @@ import { Typography } from "@mui/material"
 import { useStore } from "effector-react"
 import { FC } from "react"
 
-import { $currentWeather, WEATHER_ICON } from "@/entities/weather"
+import { $currentWeather } from "@/entities/weather"
+
+import { WEATHER_ICON } from "@/shared/lib"
 
 import styles from "./styles.module.sass"
 

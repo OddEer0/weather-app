@@ -1,17 +1,15 @@
 import { Card, CardContent, Typography } from "@mui/material"
 import { FC, HTMLAttributes } from "react"
 
+import { WEATHER_ICON } from "@/shared/lib"
 import { classname } from "@/shared/package/classname"
-
-import { getMonthDateAndWeekDay } from "../../lib"
-import { WEATHER_ICON } from "../../lib/constants"
 
 import styles from "./styles.module.sass"
 
 interface WeatherCardProps extends HTMLAttributes<HTMLDivElement> {
 	date: string
 	temperature: string | number
-	after?: string | number
+	after?: string | number | null
 	status: keyof typeof WEATHER_ICON
 }
 
@@ -24,7 +22,7 @@ export const WeatherCard: FC<WeatherCardProps> = ({ date, temperature, status, a
 		<Card className={classes} {...props}>
 			<CardContent className={styles.content}>
 				<Typography variant="caption" className={styles.date}>
-					{getMonthDateAndWeekDay(date)}
+					{date}
 				</Typography>
 				<div className={styles.icon}>{Icon ? <Icon /> : <Alt />}</div>
 				<div className={classname(styles.footer, { [styles.footerCenter]: !after })}>

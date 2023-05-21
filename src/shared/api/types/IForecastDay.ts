@@ -1,6 +1,6 @@
-import { WEATHER_ICON } from "@/entities/weather"
+import { WEATHER_ICON } from "@/shared/lib"
 
-export interface IForecastHour {
+export interface IForecastHourResponse {
 	time_epoch: number
 	time: string
 	temp_c: number
@@ -9,7 +9,7 @@ export interface IForecastHour {
 	condition: {
 		text: string
 		icon: string
-		code: number
+		code: keyof typeof WEATHER_ICON
 	}
 	wind_mph: number
 	wind_kph: number
@@ -40,7 +40,7 @@ export interface IForecastHour {
 	uv: number
 }
 
-export interface IAstro {
+export interface IAstroResponse {
 	sunrise: string
 	sunset: string
 	moonrise: string
@@ -51,35 +51,50 @@ export interface IAstro {
 	is_sun_up: number
 }
 
-export interface IForecastDay {
+export interface IForecastDayResponse {
+	maxtemp_c: number
+	maxtemp_f: number
+	mintemp_c: number
+	mintemp_f: number
+	avgtemp_c: number
+	avgtemp_f: number
+	maxwind_mph: number
+	maxwind_kph: number
+	totalprecip_mm: number
+	totalprecip_in: number
+	totalsnow_cm: number
+	avgvis_km: number
+	avgvis_miles: number
+	avghumidity: number
+	daily_will_it_rain: number
+	daily_chance_of_rain: number
+	daily_will_it_snow: number
+	daily_chance_of_snow: number
+	condition: {
+		text: string
+		icon: string
+		code: keyof typeof WEATHER_ICON
+	}
+}
+
+export interface IForecastBase {
+	maxTemp: number
+	minTemp: null | number
+	date: string
+	dateEpoch: number
+	text: string
+	iconCode: keyof typeof WEATHER_ICON
+}
+
+export interface IForecastResponse {
 	date: string
 	date_epoch: number
-	day: {
-		maxtemp_c: number
-		maxtemp_f: number
-		mintemp_c: number
-		mintemp_f: number
-		avgtemp_c: number
-		avgtemp_f: number
-		maxwind_mph: number
-		maxwind_kph: number
-		totalprecip_mm: number
-		totalprecip_in: number
-		totalsnow_cm: number
-		avgvis_km: number
-		avgvis_miles: number
-		avghumidity: number
-		daily_will_it_rain: number
-		daily_chance_of_rain: number
-		daily_will_it_snow: number
-		daily_chance_of_snow: number
-		condition: {
-			text: string
-			icon: string
-			code: keyof typeof WEATHER_ICON
-		}
-		uv: number
-	}
-	astro: IAstro
-	hour: IForecastHour[]
+	day: IForecastDayResponse
+	astro: IAstroResponse
+	hour: IForecastHourResponse[]
+}
+
+export interface IMappedForecast {
+	day: IForecastBase
+	hour: IForecastBase[]
 }

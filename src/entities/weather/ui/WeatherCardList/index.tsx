@@ -1,14 +1,15 @@
-import { WeatherCard } from ".."
 import { Skeleton, Stack, Typography } from "@mui/material"
 import { FC, HTMLAttributes } from "react"
 
-import { IForecastDay } from "@/shared/api"
+import { IForecastBase } from "@/shared/api"
 import { classname } from "@/shared/package/classname"
+
+import { WeatherCard } from "../WeatherCard"
 
 import styles from "./styles.module.sass"
 
 interface WeatherCardListProps extends HTMLAttributes<HTMLDivElement> {
-	weathers: IForecastDay[] | null
+	weathers: IForecastBase[] | null
 	isLoading: boolean
 	maxItems?: number
 }
@@ -35,11 +36,11 @@ export const WeatherCardList: FC<WeatherCardListProps> = ({
 							i < maxItems && (
 								<WeatherCard
 									className={styles.card}
-									key={weather.date_epoch}
+									key={weather.dateEpoch}
 									date={weather.date}
-									temperature={weather.day.maxtemp_c.toFixed()}
-									after={weather.day.mintemp_c.toFixed()}
-									status={weather.day.condition.code}
+									temperature={weather.maxTemp.toFixed()}
+									after={weather.minTemp}
+									status={weather.iconCode}
 								/>
 							)
 					)}

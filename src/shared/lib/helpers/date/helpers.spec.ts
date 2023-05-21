@@ -1,4 +1,4 @@
-import { getMonthDateAndWeekDay } from "."
+import { getHour, getMonthDateAndWeekDay } from "./date"
 
 describe("getMonthDateAndWeekDay helpers testing", () => {
 	it("getMonthDateAndWeekDay default use", () => {
@@ -20,7 +20,23 @@ describe("getMonthDateAndWeekDay helpers testing", () => {
 	})
 
 	it("getMonthDateAndWeekDay invalid date param", () => {
-		const weekday = getMonthDateAndWeekDay("dsadsad")
+		const weekday = getMonthDateAndWeekDay("invalid")
 		expect(weekday).toBe("Invalid Date")
+	})
+})
+
+describe("getHour helpers testing", () => {
+	it("getHour default use", () => {
+		const hour = getHour("2023-05-21 03:00")
+		const hour2 = getHour("2023-05-21 00:00")
+		const hour3 = getHour("2023-05-21 23:00")
+		expect(hour).toBe("03:00")
+		expect(hour2).toBe("00:00")
+		expect(hour3).toBe("23:00")
+	})
+
+	it("getHours invalid params", () => {
+		const hour = getHour("invalid")
+		expect(hour).toBe("Invalid Date")
 	})
 })
