@@ -20,7 +20,7 @@ export const AsideBody: FC = () => {
 				<Typography className={styles.title} variant="h1">
 					{Math.ceil(weather.temp_c)}°c
 				</Typography>
-				<Typography className={styles.status} variant="h4">
+				<Typography className={styles.status} variant="h6">
 					{weather.condition.text}
 				</Typography>
 				<Typography className={styles.subTitle} variant="subtitle1">

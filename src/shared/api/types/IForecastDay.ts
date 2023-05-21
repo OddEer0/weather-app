@@ -75,6 +75,7 @@ export interface IForecastDayResponse {
 		icon: string
 		code: keyof typeof WEATHER_ICON
 	}
+	uv: number
 }
 
 export interface IForecastBase {

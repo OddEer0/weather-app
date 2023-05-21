@@ -1,6 +1,6 @@
 import { IForecastWeatherResponse } from "@/shared/api"
 
-export const weatherMock: IForecastWeatherResponse = {
+export const forecastMock: IForecastWeatherResponse = {
 	current: {
 		last_updated_epoch: 1684434600,
 		last_updated: "2023-05-18 21:30",

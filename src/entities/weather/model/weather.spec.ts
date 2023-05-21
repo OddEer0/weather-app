@@ -1,7 +1,9 @@
 import { allSettled, fork } from "effector"
 import { vi } from "vitest"
 
-import { weatherMock } from "./weather.mock"
+import { forecastMapper } from "@/shared/api"
+import { forecastMock } from "@/shared/api/mock"
+
 import { $currentWeather, $forecastWeather, $location, fetchWeatherFx } from "./weather.model"
 
 describe("Weather store effects", () => {
@@ -14,7 +16,7 @@ describe("Weather store effects", () => {
 					fetchWeatherFx,
 					() => {
 						fn()
-						return weatherMock
+						return forecastMock
 					}
 				]
 			])
@@ -25,9 +27,9 @@ describe("Weather store effects", () => {
 			scope
 		})
 
-		expect(scope.getState($location)).toBe(weatherMock.location)
-		expect(scope.getState($currentWeather)).toBe(weatherMock.current)
-		expect(scope.getState($forecastWeather)).toBe(weatherMock.forecast.forecastday)
+		expect(scope.getState($location)).toBe(forecastMock.location)
+		expect(scope.getState($currentWeather)).toBe(forecastMock.current)
+		expect(scope.getState($forecastWeather)).toEqual(forecastMapper(forecastMock.forecast.forecastday))
 		expect(fn).toBeCalledTimes(1)
 	})
 })
