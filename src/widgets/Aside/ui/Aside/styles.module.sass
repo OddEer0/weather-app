@@ -6,6 +6,9 @@
 	background: var(--bg-primary-50)
 	min-height: 720px
 	overflow: auto
+	position: sticky
+	top: 0
+	left: 0
 	@include flex-col
 
 .header
@@ -23,5 +26,6 @@
 
 @media screen and ( max-width: 800px )
 	.aside
+		position: static
 		max-width: 100%
 		height: auto

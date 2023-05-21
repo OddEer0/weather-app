@@ -3,10 +3,8 @@ import { FC, useState } from "react"
 
 import { TabPanel } from "@/shared/ui"
 
-import { HourList } from "../HourList"
-import { WeekList } from "../WeekList"
-
-import styles from "./styles.module.sass"
+import { HourList } from "./HourList"
+import { WeekList } from "./WeekList"
 
 export const WeatherTabs: FC = () => {
 	const [value, setValue] = useState(1)
@@ -17,7 +15,7 @@ export const WeatherTabs: FC = () => {
 
 	return (
 		<>
-			<Tabs value={value} onChange={changeHandler} className={styles.tabs} centered>
+			<Tabs value={value} onChange={changeHandler} centered>
 				<Tab label="на неделю" value={1} />
 				<Tab label="почасовой" value={2} />
 			</Tabs>

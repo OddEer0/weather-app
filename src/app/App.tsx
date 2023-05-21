@@ -1,17 +1,10 @@
-import { Aside } from "@/widgets/Aside"
-import { MainLayout } from "@/widgets/MainLayout"
-import { WeatherTabs } from "@/widgets/WeatherTabs"
-
 import { useInit } from "./hooks"
+import { HomePage } from "@/pages/Home"
 
 const App = () => {
 	useInit()
 
-	return (
-		<MainLayout aside={<Aside />}>
-			<WeatherTabs />
-		</MainLayout>
-	)
+	return <HomePage />
 }
 
 export default App
