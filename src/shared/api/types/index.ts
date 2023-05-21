@@ -9,3 +9,4 @@ export type {
 	IForecastBase
 } from "./IForecastDay"
 export type { IForecastWeatherResponse } from "./IForecastWeather"
+export type { ISearchCity } from "./ISearchCity"

@@ -13,11 +13,12 @@ interface ILatLon {
 	lon: number
 }
 
-export const fetchWeatherFx = createEffect((payload: ILatLon) => {
+export const fetchWeatherFx = createEffect((payload: ILatLon | string) => {
+	if (typeof payload === "string") {
+		return forecastWeatherService.getForecastWeatherByCity(payload, 14)
+	}
 	return forecastWeatherService.getForecastWeatherByLatLon(payload.lat, payload.lon, 14)
 })
-
-const $isLoading = createStore<boolean>(true).on(fetchWeatherFx.done, () => false)
 
 export const $location = createStore<ILocationResponse | null>(null).on(
 	fetchWeatherFx.done,
@@ -33,24 +34,17 @@ export const $forecastWeather = createStore<IMappedForecast[] | null>(null).on(f
 	forecastMapper(result.result.forecast.forecastday)
 )
 
-export const $fetchFullWeather = combine({
-	isLoading: $isLoading,
-	location: $location,
-	weather: $currentWeather,
-	forecast: $forecastWeather
-})
-
 export const $fetchWeather = combine({
-	isLoading: $isLoading,
+	isLoading: fetchWeatherFx.pending,
 	weather: $currentWeather
 })
 
 export const $fetchLocation = combine({
-	isLoading: $isLoading,
+	isLoading: fetchWeatherFx.pending,
 	location: $location
 })
 
 export const $fetchForecast = combine({
-	isLoading: $isLoading,
+	isLoading: fetchWeatherFx.pending,
 	forecast: $forecastWeather
 })

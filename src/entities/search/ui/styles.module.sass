@@ -1,0 +1,15 @@
+.not
+	@include square(100%)
+	@include flex(center)
+
+.item
+	width: 100%
+	height: 30px
+	padding: 3px 10px
+	border-radius: 15px
+	cursor: pointer
+	margin: 2px 0
+	@include flex(space-between)
+
+	&:hover
+		background: #00000019

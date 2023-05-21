@@ -1,4 +1,4 @@
-import { Button, Typography } from "@mui/material"
+import { Typography } from "@mui/material"
 import { useStore } from "effector-react"
 import { FC, HTMLAttributes } from "react"
 
@@ -10,6 +10,7 @@ import { getMonthDateAndWeekDay } from "@/shared/lib"
 import { classname } from "@/shared/package/classname"
 
 import { AsideBody } from "../Body"
+import { SearchModal } from "../SearchModal"
 
 import styles from "./styles.module.sass"
 
@@ -23,7 +24,7 @@ export const Aside: FC<AsideProps> = ({ className, ...props }) => {
 		data && (
 			<aside className={classes} {...props}>
 				<div className={styles.header}>
-					<Button>BUTTON</Button>
+					<SearchModal />
 					<ToggleThemeSwitch />
 				</div>
 				<AsideBody />

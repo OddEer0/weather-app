@@ -9,7 +9,8 @@ export type {
 	IForecastHourResponse,
 	IForecastResponse,
 	IMappedForecast,
-	IForecastBase
+	IForecastBase,
+	ISearchCity
 } from "./types"
 
 export * from "./mappers"
