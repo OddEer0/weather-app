@@ -8,6 +8,7 @@ import { fetchWeatherFx } from "@/entities/weather"
 import { SearchInput } from "@/features/SearchCity"
 
 import styles from "./styles.module.sass"
+import { BsX } from "react-icons/all";
 
 export const SearchModal: FC = () => {
 	const [isShow, setIsShow] = useState(false)
@@ -23,9 +24,10 @@ export const SearchModal: FC = () => {
 
 	return (
 		<>
-			<Button onClick={openHandler}>Поиск...</Button>
+			<Button onClick={openHandler}>Поиск</Button>
 			<Modal open={isShow} onClose={closeHandler}>
 				<Box className={styles.modalContent}>
+					<BsX onClick={closeHandler} className={styles.close} />
 					<div className={styles.input}>
 						<SearchInput />
 					</div>
