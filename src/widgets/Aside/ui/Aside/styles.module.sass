@@ -1,0 +1,36 @@
+.aside
+	width: 100%
+	height: 100vh
+	max-width: 460px
+	padding: 40px
+	background: var(--bg-primary-50)
+	min-height: 720px
+	overflow: auto
+	position: sticky
+	top: 0
+	left: 0
+	@include flex-col
+
+.header
+	width: 100%
+	@include flex
+
+.footer
+	width: 100%
+	@include flex-col
+
+.info
+	width: 100%
+	margin-bottom: 28px
+	@include flex(space-around)
+
+.loading
+	@include square(100%)
+	@include flex(center)
+	flex: 1
+
+@media screen and ( max-width: 800px )
+	.aside
+		position: static
+		max-width: 100%
+		height: auto

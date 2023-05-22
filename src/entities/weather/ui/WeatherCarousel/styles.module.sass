@@ -1,0 +1,74 @@
+.wrapper
+	width: 100%
+	max-width: 980px
+	min-width: 500px
+	height: 143px
+	margin: 15px 0
+	@include flex(center)
+
+.carousel,
+.stack
+	max-width: 746px
+
+.muiStack
+	width: 746px
+
+.skeleton,
+.card
+	margin: 0 12px
+
+.stack
+	overflow: hidden
+
+.none
+	@include square(100%)
+	@include flex(center)
+
+.carousel
+	.slick-arrow
+		font-size: 20px
+
+		&.slick-next
+			right: 10px
+
+			&::before
+				display: none
+
+		&.slick-prev
+			left: 10px
+			z-index: 1
+
+			&::before
+				display: none
+
+
+@media screen and ( max-width: 1280px )
+	.carousel,
+	.stack
+		max-width: 622px
+
+@media screen and ( max-width: 1150px )
+	.carousel,
+	.stack
+		max-width: 498px
+
+
+@media screen and ( max-width: 1030px )
+	.carousel,
+	.stack
+		max-width: 380px
+
+@media screen and (max-width: 800px)
+	.carousel,
+	.stack
+		max-width: 622px
+
+@media screen and (max-width: 720px)
+	.carousel,
+	.stack
+		max-width: 498px
+
+@media screen and (max-width: 585px)
+	.carousel,
+	.stack
+		max-width: 380px
