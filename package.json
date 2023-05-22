@@ -10,7 +10,6 @@
 		"coverage": "vitest run --coverage",
 		"lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
-		"gen:theme-typings": "chakra-cli tokens ./src/app/theme/index.ts",
 		"postinstall": "npm run gen:theme-typings"
 	},
 	"dependencies": {
