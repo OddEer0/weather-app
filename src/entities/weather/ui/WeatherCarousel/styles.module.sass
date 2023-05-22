@@ -20,9 +20,27 @@
 .stack
 	overflow: hidden
 
-.not
+.none
 	@include square(100%)
 	@include flex(center)
+
+.carousel
+	.slick-arrow
+		font-size: 20px
+
+		&.slick-next
+			right: 10px
+
+			&::before
+				display: none
+
+		&.slick-prev
+			left: 10px
+			z-index: 1
+
+			&::before
+				display: none
+
 
 @media screen and ( max-width: 1280px )
 	.carousel,

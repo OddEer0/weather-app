@@ -1,5 +1,6 @@
-import { Skeleton, Stack, Typography } from "@mui/material"
+import { Skeleton, Stack, Typography, useTheme } from "@mui/material";
 import { FC, HTMLAttributes } from "react"
+import { SlArrowLeft, SlArrowRight } from "react-icons/all"
 import Carousel from "react-slick"
 
 import { IForecastBase } from "@/shared/api"
@@ -12,6 +13,28 @@ import styles from "./styles.module.sass"
 interface WeatherCarouselProps extends HTMLAttributes<HTMLDivElement> {
 	weathers: IForecastBase[] | null
 	isLoading: boolean
+}
+
+function SampleNextArrow(props: { className?: any; style?: any; onClick?: any }) {
+	const { className, style, onClick } = props
+	const theme = useTheme()
+
+	return (
+		<div className={className} style={{ ...style }} onClick={onClick}>
+			<SlArrowRight style={{ color: theme.palette.primary.main }} />
+		</div>
+	)
+}
+
+function SamplePrevArrow(props: { className?: any; style?: any; onClick?: any }) {
+	const { className, style, onClick } = props
+	const theme = useTheme()
+
+	return (
+		<div className={className} style={{ ...style }} onClick={onClick}>
+			<SlArrowLeft style={{ color: theme.palette.primary.main }} />
+		</div>
+	)
 }
 
 export const WeatherCarousel: FC<WeatherCarouselProps> = ({ weathers, isLoading, className, ...props }) => {
@@ -79,7 +102,12 @@ export const WeatherCarousel: FC<WeatherCarouselProps> = ({ weathers, isLoading,
 					</Stack>
 				</div>
 			) : weathers && weathers.length ? (
-				<Carousel {...settings} className={styles.carousel}>
+				<Carousel
+					nextArrow={<SampleNextArrow />}
+					prevArrow={<SamplePrevArrow />}
+					{...settings}
+					className={styles.carousel}
+				>
 					{weathers.map(forecast => (
 						<div style={{ display: "flex" }} key={forecast.dateEpoch}>
 							<WeatherCard
@@ -93,7 +121,7 @@ export const WeatherCarousel: FC<WeatherCarouselProps> = ({ weathers, isLoading,
 					))}
 				</Carousel>
 			) : (
-				<Typography variant="h4" className={styles.not}>
+				<Typography variant="h4" className={styles.none}>
 					Нет данных о погоде
 				</Typography>
 			)}
