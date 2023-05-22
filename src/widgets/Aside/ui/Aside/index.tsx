@@ -21,7 +21,7 @@ export const Aside: FC<AsideProps> = ({ className, ...props }) => {
 	const data = useStore($fetchLocation)
 
 	return (
-		data && (
+		data.location && (
 			<aside className={classes} {...props}>
 				<div className={styles.header}>
 					<SearchModal />

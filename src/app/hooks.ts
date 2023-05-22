@@ -14,9 +14,9 @@ export const useInit = () => {
 			const lon = position.coords.longitude
 			getWeather({ lat, lon })
 		})
-	}
-
-	if (city) {
+	} else if (city) {
 		getWeather(city)
+	} else {
+		getWeather("Moscow")
 	}
 }
