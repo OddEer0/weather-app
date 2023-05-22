@@ -9,8 +9,7 @@
 		"test": "vitest",
 		"coverage": "vitest run --coverage",
 		"lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-		"preview": "vite preview",
-		"postinstall": "npm run gen:theme-typings"
+		"preview": "vite preview"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.11.0",
