@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material"
+import { CircularProgress, Typography } from "@mui/material"
 import { useStore } from "effector-react"
 import { FC, HTMLAttributes } from "react"
 
@@ -21,21 +21,29 @@ export const Aside: FC<AsideProps> = ({ className, ...props }) => {
 	const data = useStore($fetchLocation)
 
 	return (
-		data.location && (
-			<aside className={classes} {...props}>
-				<div className={styles.header}>
-					<SearchModal />
-					<ToggleThemeSwitch />
+		<aside className={classes} {...props}>
+			{data.isLoading ? (
+				<div className={styles.loading}>
+					<CircularProgress size={100} />
 				</div>
-				<AsideBody />
-				<div className={styles.footer}>
-					<div className={styles.info}>
-						<Typography>Сегодня</Typography>
-						<Typography>{getMonthDateAndWeekDay(data.location?.localtime as string)}</Typography>
-					</div>
-					<Typography>{data.location?.name}</Typography>
-				</div>
-			</aside>
-		)
+			) : (
+				data.location && (
+					<>
+						<div className={styles.header}>
+							<SearchModal />
+							<ToggleThemeSwitch />
+						</div>
+						<AsideBody />
+						<div className={styles.footer}>
+							<div className={styles.info}>
+								<Typography>Сегодня</Typography>
+								<Typography>{getMonthDateAndWeekDay(data.location?.localtime as string)}</Typography>
+							</div>
+							<Typography>{data.location?.name}</Typography>
+						</div>
+					</>
+				)
+			)}
+		</aside>
 	)
 }

@@ -1,21 +1,27 @@
-import { Stack, Typography } from "@mui/material"
+import { Skeleton, Stack, Typography } from "@mui/material";
 import { useStore } from "effector-react"
 import { FC } from "react"
 
-import { $currentWeather, WeatherDetailCard } from "@/entities/weather"
+import { $fetchWeather, WeatherDetailCard } from "@/entities/weather";
 
 import styles from "./styles.module.sass"
 
 export const SecondSection: FC = () => {
-	const currentWeather = useStore($currentWeather)
-	currentWeather?.wind_mph
+	const { isLoading, weather: currentWeather} = useStore($fetchWeather)
 
 	return (
 		<section className={styles.section}>
 			<Typography className={styles.title} variant="h4" fontWeight={700}>
 				Подробно на сегодня
 			</Typography>
-			{currentWeather ? (
+			{ isLoading ? (
+				<Stack direction="row" flexWrap="wrap" justifyContent="center">
+					<Skeleton variant="rounded" className={styles.card} width={320} height={180} />
+					<Skeleton variant="rounded" className={styles.card} width={320} height={180} />
+					<Skeleton variant="rounded" className={styles.card} width={320} height={180} />
+					<Skeleton variant="rounded" className={styles.card} width={320} height={180} />
+				</Stack>
+			) : currentWeather ? (
 				<Stack direction="row" flexWrap="wrap" justifyContent="center">
 					<WeatherDetailCard title="Скорость ветра" className={styles.card}>
 						<Typography variant="h3" fontWeight={900}>
