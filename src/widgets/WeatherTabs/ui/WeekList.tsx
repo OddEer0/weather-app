@@ -12,7 +12,7 @@ export const WeekList: FC = () => {
 		return forecast ? forecast.map(forecastDay => forecastDay.day) : null
 	}, [forecast])
 
-	return isPhone || week.length < 7 ? (
+	return isPhone || (week && week.length < 7) ? (
 		<WeatherCardList weathers={week} isLoading={isLoading} />
 	) : (
 		<WeatherCarousel isLoading={isLoading} weathers={week} />
